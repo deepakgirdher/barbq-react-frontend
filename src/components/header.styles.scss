@@ -1,0 +1,28 @@
+.header-container{
+  height: 60px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  justify-content: space-between;
+
+  .header-title{
+    height: 40px;
+    img{
+      height: 100%;
+    }
+  }
+  
+  .header-menu{
+    span{
+      margin-left: 20px;
+      letter-spacing: 1px;
+      font-weight: bold;
+      color: #999;
+    }
+    span:hover{
+      cursor: pointer;
+      color: #ff3847;
+    }
+  }
+}
