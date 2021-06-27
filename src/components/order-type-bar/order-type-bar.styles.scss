@@ -1,0 +1,34 @@
+@import "../../styles/common.styles.scss";
+
+.order-type-bar-container{
+  .order-type-section{
+    height: 75px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    .order-type-item{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px;
+      .order-type-image{
+        opacity: .7;
+        img{
+          width: 40px;
+        }
+      }
+      .order-type-title{
+        margin-top: 5px;
+        font-size: .7rem;
+        letter-spacing: 1px;
+        color: $blue-color;
+        font-weight: bold;
+      }
+    }
+    .order-type-item:hover{
+      cursor: pointer;
+      background-color: #eee;
+    }
+  }
+}
