@@ -1,0 +1,10 @@
+@import "../../styles/common.styles.scss";
+
+.bill-container{
+  width: 25vw;
+  background-color: #fff;
+
+  .bill-title{
+    @include section-title
+  }
+}

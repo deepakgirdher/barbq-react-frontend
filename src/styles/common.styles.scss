@@ -1,0 +1,21 @@
+
+// Color Palette
+$red-color: #ff3847;
+$blue-color: #779ecb;
+
+// Common styles
+@mixin section-title{
+  height: 75px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: auto;
+  right: auto;
+  width: 100%;
+  color: #fff;
+  background-color: $blue-color;
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}

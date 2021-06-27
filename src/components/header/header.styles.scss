@@ -1,3 +1,5 @@
+@import "../../styles/common.styles.scss";
+
 .header-container{
   height: 60px;
   border-bottom: 1px solid #ddd;
@@ -22,7 +24,7 @@
     }
     span:hover{
       cursor: pointer;
-      color: #ff3847;
+      color: $red-color;
     }
   }
 }
