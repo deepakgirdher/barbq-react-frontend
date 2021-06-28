@@ -1,61 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addItemToOrder } from '../../redux/order/order.actions';
 import OrderTypeBar from '../order-type-bar/order-type-bar.component';
+import MenuItemCard from '../menu-item-card/menu-item-card.component';
+
 import './item-list.styles.scss'
 
-class ItemList extends React.Component {
-  render() {
-    return (
-      <div className="item-list-container">
-        <OrderTypeBar />
-        <div className="menu-items-container">
-          <div key="1" className="menu-item-card">
-            <div className="item-veg">&nbsp;</div>
-            <div className="item-name">Paneer Tikka Masala</div>
-            <div className="item-price">Rs. 250</div>
-          </div>
-          <div key="2" className="menu-item-card">
-            <div className="item-veg">&nbsp;</div>
-            <div className="item-name">Tandoori Paneer Malai Tikka</div>
-            <div className="item-price">Rs. 250</div>
-          </div>
-          <div className="menu-item-card">
-            <div className="item-non-veg">&nbsp;</div>
-            <div className="item-name">Murg Tikka Masala</div>
-            <div className="item-price">Rs. 300</div>
-          </div>
-          <div key="1" className="menu-item-card">
-            <div className="item-veg">&nbsp;</div>
-            <div className="item-name">Paneer Tikka Masala</div>
-            <div className="item-price">Rs. 250</div>
-          </div>
-          <div key="2" className="menu-item-card">
-            <div className="item-veg">&nbsp;</div>
-            <div className="item-name">Tandoori Paneer Malai Tikka</div>
-            <div className="item-price">Rs. 250</div>
-          </div>
-          <div className="menu-item-card">
-            <div className="item-non-veg">&nbsp;</div>
-            <div className="item-name">Murg Tikka Masala</div>
-            <div className="item-price">Rs. 300</div>
-          </div> <div key="1" className="menu-item-card">
-            <div className="item-veg">&nbsp;</div>
-            <div className="item-name">Paneer Tikka Masala</div>
-            <div className="item-price">Rs. 250</div>
-          </div>
-          <div key="2" className="menu-item-card">
-            <div className="item-veg">&nbsp;</div>
-            <div className="item-name">Tandoori Paneer Malai Tikka</div>
-            <div className="item-price">Rs. 250</div>
-          </div>
-          <div className="menu-item-card">
-            <div className="item-non-veg">&nbsp;</div>
-            <div className="item-name">Murg Tikka Masala</div>
-            <div className="item-price">Rs. 300</div>
-          </div>
-        </div>
-      </div>
-    )
+const ItemList = ({ menuItems, addItemToOrder }) => {
+
+  const addItem = (item) => {
+    addItemToOrder(item);
   }
+
+  return (
+    <div className="item-list-container">
+      <OrderTypeBar />
+      <div className="menu-items-container">
+        {
+          menuItems.map(menuItem => <MenuItemCard key={menuItem.menuId} menuItem={menuItem} addItem={addItem} />)
+        }
+      </div>
+    </div>
+  )
 }
 
-export default ItemList;
+const mapDispatchToProps = dispatch => ({
+  addItemToOrder: itemDetails => dispatch(addItemToOrder(itemDetails))
+})
+
+export default connect(null, mapDispatchToProps)(ItemList);

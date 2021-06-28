@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './header.styles.scss';
 
@@ -10,8 +11,8 @@ class Header extends React.Component {
           <img src="/assets/images/logo.png" alt="Logo Image" />
         </div>
         <div className="header-menu">
-          <span>ADMIN</span>
-          <span>POS</span>
+          <Link to="/admin" style={{ textDecoration: 'none' }}><span>ADMIN</span></Link>
+          <Link to="/" style={{ textDecoration: 'none' }}><span>POS</span></Link>
         </div>
       </div>
     )

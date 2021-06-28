@@ -1,14 +1,41 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './bill.styles.scss'
 
-class Bill extends React.Component {
-  render() {
+const Bill = ({ orders }) => {
+  const renderBillDetails = () => {
+    let currentOrderDetails = orders.orderDetails.filter((orderItems) => orderItems.orderType === orders.currentOrder);
     return (
-      <div className="bill-container">
-        <div className="bill-title">TAKE AWAY</div>
+      <div>
+        {
+          currentOrderDetails.length < 1 ?
+            <div>No Items added yet.</div>
+            :
+            <div>
+              {currentOrderDetails[0].orderItems.map(item => (
+                <>
+                  <div>{item.itemName}</div>
+                  <div>{item.quantity}</div>
+                  <div>{item.totalPrice}</div>
+                </>
+              ))
+              }
+            </div>
+        }
       </div>
     )
   }
+
+  return (
+    <div className="bill-container">
+      <div className="bill-title">{orders.currentOrder}</div>
+      {renderBillDetails()}
+    </div>
+  )
 }
 
-export default Bill;
+const mapStateToProps = state => ({
+  orders: state.order
+})
+
+export default connect(mapStateToProps)(Bill);

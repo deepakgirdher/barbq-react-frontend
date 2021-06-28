@@ -1,0 +1,4 @@
+export const OrderActionTypes = {
+  SET_CURRENT_ORDER: 'SET_CURRENT_ORDER',
+  ADD_ITEM_TO_ORDER: 'ADD_ITEM_TO_ORDER'
+}

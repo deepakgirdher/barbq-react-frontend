@@ -1,13 +1,18 @@
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/header/header.component';
-import POS from './pages/pos/pos.component';
+import PosPage from './pages/pos-page/pos-page.component';
+import AdminPage from './pages/admin-page/admin-page.component';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
       <Header />
-      <POS />
-    </div>
+      <Switch>
+        <Route exact path="/" component={PosPage} />
+        <Route exact path="/admin" component={AdminPage} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
