@@ -6,30 +6,47 @@ const Bill = ({ orders }) => {
   const renderBillDetails = () => {
     let currentOrderDetails = orders.orderDetails.filter((orderItems) => orderItems.orderType === orders.currentOrder);
     return (
-      <div>
+      <>
         {
           currentOrderDetails.length < 1 ?
-            <div>No Items added yet.</div>
+            <div className="bill-no-item">No Items added yet.</div>
             :
             <div>
               {currentOrderDetails[0].orderItems.map(item => (
-                <>
+                <div className="bill-items">
                   <div>{item.itemName}</div>
-                  <div>{item.quantity}</div>
+                  <div className="bill-item-quantity"><span>-</span>{item.quantity}<span>+</span></div>
                   <div>{item.totalPrice}</div>
-                </>
+                  <div className="bill-delete-item"><img src="/assets/images/icons/delete.png" alt="" /></div>
+                </div>
               ))
               }
             </div>
         }
-      </div>
+      </>
     )
   }
 
   return (
     <div className="bill-container">
-      <div className="bill-title">{orders.currentOrder}</div>
-      {renderBillDetails()}
+      <div className="bill-top">
+        <div className="bill-title">{orders.currentOrder}</div>
+        <div className="bill-details">
+          <div className="bill-header">
+            <div>Item</div>
+            <div>Quantity</div>
+            <div>Price</div>
+            <div>&nbsp;</div>
+          </div>
+          {renderBillDetails()}
+        </div>
+      </div>
+
+      <div className="bill-bottom">
+        <div className="bill-gst">GST</div>
+        <div className="bill-total">Total</div>
+        <div className="bill-button">Button</div>
+      </div>
     </div>
   )
 }

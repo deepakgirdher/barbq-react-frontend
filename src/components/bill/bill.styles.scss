@@ -2,9 +2,69 @@
 
 .bill-container{
   width: 25vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #fff;
 
   .bill-title{
     @include section-title
+  }
+
+  .bill-details{
+    padding: 5px;
+    .bill-header{
+      display: grid;
+      grid-template-columns: 3fr 2fr 2fr 1fr;
+      margin-top: 20px;
+      font-size: .8rem;
+      letter-spacing: 1px;
+      color: $blue-color;
+      font-weight: bold;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 10px;
+    }
+    .bill-no-item{
+      color: $red-color;
+      opacity: .7;
+      letter-spacing: 1px;
+      font-size: .9rem;
+      font-weight: bold;
+      width: 100%;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .bill-items{
+      display: grid;
+      grid-template-columns: 3fr 2fr 2fr 1fr;
+      padding: 5px 0px;
+      font-size: .8rem;
+      letter-spacing: 1px;
+      color: #777;
+      font-weight: bold;
+      border-bottom: 1px solid #eee;
+
+      .bill-item-quantity{
+        span{
+          padding: 7px;
+        }
+        span:hover{
+          cursor: pointer;
+          background-color: #ddd;
+        }
+      }
+
+      .bill-delete-item{
+        img{
+          width: 20px;
+          opacity: .5;
+        }
+        img:hover{
+          cursor: pointer;
+          opacity: .8;
+        }
+      }
+
+    }
   }
 }
