@@ -12,15 +12,25 @@ const Bill = ({ orders }) => {
             <div className="bill-no-item">No Items added yet.</div>
             :
             <div>
-              {currentOrderDetails[0].orderItems.map(item => (
-                <div className="bill-items">
-                  <div>{item.itemName}</div>
-                  <div className="bill-item-quantity"><span>-</span>{item.quantity}<span>+</span></div>
-                  <div>{item.totalPrice}</div>
-                  <div className="bill-delete-item"><img src="/assets/images/icons/delete.png" alt="" /></div>
+              <div className="bill-item-details">
+                {currentOrderDetails[0].orderItems.map(item => (
+                  <div className="bill-items">
+                    <div>{item.itemName}</div>
+                    <div className="bill-item-quantity"><span>-</span>{item.quantity}<span>+</span></div>
+                    <div>{item.totalPrice}</div>
+                    <div className="bill-delete-item"><img src="/assets/images/icons/delete.png" alt="" /></div>
+                  </div>
+                ))
+                }
+              </div>
+              <div className="bill-bottom">
+                <div className="bill-gst">GST(18%) <span>Rs. 100</span></div>
+                <div className="bill-total">Total <span>Rs. {currentOrderDetails[0].totalPrice}</span></div>
+                <div className="bill-button">
+                  <button className="bill-clear-button">CLEAR</button>
+                  <button className="bill-bill-button">BILL</button>
                 </div>
-              ))
-              }
+              </div>
             </div>
         }
       </>
@@ -29,23 +39,15 @@ const Bill = ({ orders }) => {
 
   return (
     <div className="bill-container">
-      <div className="bill-top">
-        <div className="bill-title">{orders.currentOrder}</div>
-        <div className="bill-details">
-          <div className="bill-header">
-            <div>Item</div>
-            <div>Quantity</div>
-            <div>Price</div>
-            <div>&nbsp;</div>
-          </div>
-          {renderBillDetails()}
+      <div className="bill-title">{orders.currentOrder}</div>
+      <div className="bill-details">
+        <div className="bill-header">
+          <div>Item</div>
+          <div>Quantity</div>
+          <div>Price</div>
+          <div>&nbsp;</div>
         </div>
-      </div>
-
-      <div className="bill-bottom">
-        <div className="bill-gst">GST</div>
-        <div className="bill-total">Total</div>
-        <div className="bill-button">Button</div>
+        {renderBillDetails()}
       </div>
     </div>
   )
