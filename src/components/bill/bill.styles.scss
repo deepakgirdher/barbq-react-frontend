@@ -9,10 +9,10 @@
   }
 
   .bill-details{
-    padding: 5px;
+    padding: 5px 10px;
     .bill-header{
       display: grid;
-      grid-template-columns: 3fr 2fr 2fr 1fr;
+      grid-template-columns: 4fr 2fr 2fr 1fr;
       margin-top: 20px;
       font-size: .8rem;
       letter-spacing: 1px;
@@ -39,7 +39,7 @@
       border-bottom: 1px solid #eee;
       .bill-items{
         display: grid;
-        grid-template-columns: 3fr 2fr 2fr 1fr;
+        grid-template-columns: 4fr 2fr 2fr 1fr;
         padding: 5px 0px;
         font-size: .8rem;
         letter-spacing: 1px;
@@ -100,16 +100,14 @@
         .bill-clear-button{
           background-color: rgba($red-color,.8);
           color: #fff;
-          font-weight: bold;
           letter-spacing: 1px;
           border: none;
           border-radius: 10px;
         }
         .bill-bill-button{
-          width: 70%;
+          width: 65%;
           background-color: $blue-color;
           letter-spacing: 1px;
-          font-weight: bold;
           color: #fff;
           padding: 10px 0px;
           border: none;

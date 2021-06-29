@@ -1,80 +1,47 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import CategoryList from '../../components/category-list/category-list.component';
 import Bill from '../../components/bill/bill.component';
 import ItemList from '../../components/item-list/item-list.component';
+import OrderTypeBar from '../../components/order-type-bar/order-type-bar.component';
+import { MenuData } from './menu.data';
 import './pos-page.styles.scss';
 
-class PosPage extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      menuItems: [
-        {
-          menuId: 1,
-          name: 'Paneer Tikka Masala',
-          price: 250,
-          isVeg: true
-        },
-        {
-          menuId: 2,
-          name: 'Tandoori Paneer Malai Tikka',
-          price: 250,
-          isVeg: true
-        },
-        {
-          menuId: 3,
-          name: 'Murg Tikka Masala',
-          price: 300,
-          isVeg: false
-        },
-        {
-          menuId: 4,
-          name: 'Veg Chilli',
-          price: 200,
-          isVeg: true
-        },
-        {
-          menuId: 5,
-          name: 'Hara Bhara Kabab',
-          price: 200,
-          isVeg: true
-        },
-        {
-          menuId: 6,
-          name: 'Chicken 65',
-          price: 350,
-          isVeg: false
-        },
-        {
-          menuId: 7,
-          name: 'Gobi Manchurian',
-          price: 150,
-          isVeg: true
-        },
-        {
-          menuId: 8,
-          name: 'Tandoori Chicken',
-          price: 400,
-          isVeg: false
-        },
-        {
-          menuId: 9,
-          name: 'Potato Wedges',
-          price: 200,
-          isVeg: true
-        }
-      ]
+const PosPage = () => {
+  const [menuData, setMenuData] = useState(MenuData);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [menuList, setMenuList] = useState(null);
+  const [categoryList, setCategoryList] = useState(null);
+
+  useEffect(() => {
+    loadCategoryList();
+    changeCategory(1);
+  }, [])
+
+  const loadCategoryList = () => {
+    let catList = [];
+    menuData.forEach(catItem => catList.push({ categoryId: catItem.categoryId, categoryName: catItem.categoryName }));
+    console.log("List is:", catList);
+    setCategoryList(catList);
+  }
+  const changeCategory = (newCategory) => {
+    let selMenu = menuData.filter(menu => newCategory === menu.categoryId);
+    if (selMenu.length > 0) {
+      setSelectedCategory(newCategory);
+      setMenuList(selMenu[0].menuItems);
     }
   }
-  render() {
-    return (
-      <div className="pos-container">
-        <CategoryList />
-        <ItemList menuItems={this.state.menuItems} />
-        <Bill />
+
+
+  return (
+    <div className="pos-container">
+      <CategoryList categoryList={categoryList} selectedCategory={selectedCategory} changeCategory={changeCategory} />
+      <div>
+        <OrderTypeBar />
+        {menuList ? <ItemList menuItems={menuList} /> : <div className="item-list-area">Select a category from the menu.</div>}
       </div>
-    )
-  }
+      <Bill />
+    </div>
+  )
 }
 
 

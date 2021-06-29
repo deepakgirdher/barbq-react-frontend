@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addItemToOrder } from '../../redux/order/order.actions';
-import OrderTypeBar from '../order-type-bar/order-type-bar.component';
 import MenuItemCard from '../menu-item-card/menu-item-card.component';
 
 import './item-list.styles.scss'
@@ -14,7 +13,6 @@ const ItemList = ({ menuItems, addItemToOrder }) => {
 
   return (
     <div className="item-list-container">
-      <OrderTypeBar />
       <div className="menu-items-container">
         {
           menuItems.map(menuItem => <MenuItemCard key={menuItem.menuId} menuItem={menuItem} addItem={addItem} />)

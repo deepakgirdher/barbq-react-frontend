@@ -5,7 +5,8 @@
   background-color: #fff;
 
   .menu-title{
-    @include section-title
+    @include section-title;
+    margin-bottom: 20px;
   }
 
   .category-item{
@@ -24,5 +25,9 @@
     cursor: pointer;
     background-color: rgba($blue-color, .5);
     color: #000;
+  }
+  .active-category{
+    background-color: $blue-color;
+    color: #fff;
   }
 }

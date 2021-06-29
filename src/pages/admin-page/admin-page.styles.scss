@@ -1,5 +1,15 @@
-.pos-container{
+@import "../../styles/common.styles.scss";
+
+.admin-container{
   height: calc(100vh - 61px);
   background-color: #ddd;
   display: flex;
+  .admin-title{
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: $blue-color;
+  }
 }

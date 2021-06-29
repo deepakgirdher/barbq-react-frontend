@@ -27,7 +27,7 @@ const Bill = ({ orders }) => {
                 <div className="bill-gst">GST(18%) <span>Rs. 100</span></div>
                 <div className="bill-total">Total <span>Rs. {currentOrderDetails[0].totalPrice}</span></div>
                 <div className="bill-button">
-                  <button className="bill-clear-button">CLEAR</button>
+                  <button className="bill-clear-button">CANCEL</button>
                   <button className="bill-bill-button">BILL</button>
                 </div>
               </div>
